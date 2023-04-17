@@ -1,3 +1,5 @@
+
+import { ArticlesFilter } from "./components/Articles";
 import { Header } from "./components/Header";
 import { SearchBar } from "./components/SearchBar";
 import { Sidebar } from "./components/Sidebar";
@@ -14,6 +16,7 @@ export default function HomePage(){
               <SearchBar/>
               <Tags/>
             </div>
+            <ArticlesFilter/>
           </div>
         </main>
         <Sidebar/>
