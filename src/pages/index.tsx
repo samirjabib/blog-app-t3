@@ -6,7 +6,7 @@ import { Tags } from "./components/Tags";
 
 export default function HomePage() {
   return (
-    <div className="flex h-screen w-full flex-col">
+    <div className="flex h-full w-full flex-col">
       <Header />
       <section className="grid h-full grid-cols-12 place-items-center">
         <main className="col-span-8 h-full w-full border-r border-gray-300">
