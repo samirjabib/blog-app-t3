@@ -1,27 +1,27 @@
-
-import { ArticlesFilter } from "./components/Articles";
+import { Article, ArticlesFilter } from "./components/Articles";
 import { Header } from "./components/Header";
 import { SearchBar } from "./components/SearchBar";
 import { Sidebar } from "./components/Sidebar";
 import { Tags } from "./components/Tags";
 
-export default function HomePage(){
-  return(
-    <div className="flex flex-col w-full h-screen">
-      <Header/>
-      <section className="grid grid-cols-12 place-items-center h-full">
-        <main className="col-span-8 border-r border-gray-300 w-full h-full">
-          <div className="flex flex-col w-full space-y-4 p-10">
+export default function HomePage() {
+  return (
+    <div className="flex h-screen w-full flex-col">
+      <Header />
+      <section className="grid h-full grid-cols-12 place-items-center">
+        <main className="col-span-8 h-full w-full border-r border-gray-300">
+          <div className="flex w-full flex-col space-y-4 p-10">
             <div className="flex w-full items-center space-x-4">
-              <SearchBar/>
-              <Tags/>
+              <SearchBar />
+              <Tags />
             </div>
-            <ArticlesFilter/>
+            <ArticlesFilter />
+            <Article/>
           </div>
         </main>
-        <Sidebar/>
+        <Sidebar />
       </section>
     </div>
-  )
+  );
 }
 
