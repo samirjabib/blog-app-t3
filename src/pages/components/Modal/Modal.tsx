@@ -1,5 +1,7 @@
 import { Dialog, Transition } from '@headlessui/react'
-import { Fragment, useState, PropsWithChildren } from 'react'
+import { Fragment } from 'react'
+
+import type { PropsWithChildren} from 'react'
 
 
 
@@ -9,7 +11,7 @@ type ModalProps = {
     title?:string
 }
 
-export default function MOdal({isOpen, onClose, title, children} : PropsWithChildren<ModalProps>) {
+export default function Modal({isOpen, onClose, title, children} : PropsWithChildren<ModalProps>) {
 
 
   return (
