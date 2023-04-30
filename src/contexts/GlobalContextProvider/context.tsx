@@ -1,8 +1,8 @@
 import { createContext } from 'react';
 import { initialState } from './initialState';
 
-export const globalContext = createContext({
+export const GlobalContext = createContext({
     ...initialState
 })
 
-export const Provider = globalContext.Provider
+export const Provider = GlobalContext.Provider

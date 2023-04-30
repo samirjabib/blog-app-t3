@@ -1,12 +1,14 @@
-import { useState } from "react";
+import { useState , useContext } from "react";
 import { Main } from "./components/Main";
 import { Modal } from "./components/Modal";
 import { Sidebar } from "./components/Sidebar";
 import { MainLayout } from "./layout";
+import { GlobalContext } from "~/contexts/GlobalContextProvider/context";
 
 export default function HomePage() {
 
-  
+  const {isWriteModalOpen, setIsWriteModalOpen} = useContext(GlobalContext)
+
   return (
     <MainLayout>
       <div className="flex h-full w-full flex-col">
