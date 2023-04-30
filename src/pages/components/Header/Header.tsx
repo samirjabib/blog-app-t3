@@ -2,9 +2,10 @@
 import { IoMdReorder } from "react-icons/io";
 import { BsBell } from "react-icons/bs";
 import { FiEdit } from "react-icons/fi";
-import { signIn } from "next-auth/react";
+import { signIn, signOut } from "next-auth/react";
 
 import clsx from "clsx";
+import { HiLogout } from "react-icons/hi";
 
 type Props = {
   status: "loading" | "unauthenticated" | "authenticated";
@@ -15,6 +16,10 @@ export default function Header({ status }: Props) {
 
   const login = async (): Promise<void> => {
     await signIn();
+  };
+
+  const logout = async (): Promise<void> => {
+    await signOut();
   };
 
   return (
@@ -35,6 +40,15 @@ export default function Header({ status }: Props) {
             <button className="flex items-center space-x-3 rounded border border-gray-200 px-4 py-2 transition hover:border-gray-900 hover:text-gray-900">
               <div>Write</div>
               <FiEdit />
+            </button>
+          </div>
+          <div>
+            <button
+              onClick={logout}
+              className="flex items-center space-x-3 rounded border border-gray-200 px-4 py-2 transition hover:border-gray-900 hover:text-gray-900"
+            >
+              <div>Logout</div>
+              <HiLogout />
             </button>
           </div>
         </div>
