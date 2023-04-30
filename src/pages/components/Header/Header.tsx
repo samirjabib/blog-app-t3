@@ -37,7 +37,10 @@ export default function Header({ status }: Props) {
             <div className="h-5 w-5 rounded-full bg-gray-600" />
           </div>
           <div>
-            <button className="flex items-center space-x-3 rounded border border-gray-200 px-4 py-2 transition hover:border-gray-900 hover:text-gray-900">
+            <button 
+              className="flex items-center space-x-3 rounded border border-gray-200 px-4 py-2 transition hover:border-gray-900 hover:text-gray-900"
+              
+            >
               <div>Write</div>
               <FiEdit />
             </button>
