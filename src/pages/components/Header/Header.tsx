@@ -6,21 +6,19 @@ import { signIn, signOut } from "next-auth/react";
 
 import clsx from "clsx";
 import { HiLogout } from "react-icons/hi";
+import { useContext } from "react";
+import { GlobalContext } from "~/contexts/GlobalContextProvider/context";
 
 type Props = {
   status: "loading" | "unauthenticated" | "authenticated";
 };
 
 export default function Header({ status }: Props) {
-  console.log(status);
 
-  const login = async (): Promise<void> => {
-    await signIn();
-  };
 
-  const logout = async (): Promise<void> => {
-    await signOut();
-  };
+  const {setIsWriteModalOpen} = useContext(GlobalContext)
+
+
 
   return (
     <header className="flex h-20 w-full flex-row items-center justify-around border-b-[1px] border-gray-200 bg-white">
@@ -39,7 +37,7 @@ export default function Header({ status }: Props) {
           <div>
             <button 
               className="flex items-center space-x-3 rounded border border-gray-200 px-4 py-2 transition hover:border-gray-900 hover:text-gray-900"
-              
+              onClick={() => setIsWriteModalOpen(true)}
             >
               <div>Write</div>
               <FiEdit />
@@ -47,7 +45,7 @@ export default function Header({ status }: Props) {
           </div>
           <div>
             <button
-              onClick={logout}
+              onClick={() => signOut()}
               className="flex items-center space-x-3 rounded border border-gray-200 px-4 py-2 transition hover:border-gray-900 hover:text-gray-900"
             >
               <div>Logout</div>
@@ -58,7 +56,7 @@ export default function Header({ status }: Props) {
       ) : (
         <div>
           <button
-            onClick={login}
+            onClick={() => signIn()}
             className={clsx(
               "flex items-center space-x-3 rounded border border-gray-200",
               "px-4 py-2 transition hover:border-gray-900 hover:text-gray-900"

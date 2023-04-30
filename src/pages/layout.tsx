@@ -6,7 +6,6 @@ export const MainLayout = ({children}:React.PropsWithChildren) => {
 
     const { data:sessionData, status }= useSession()
 
-    console.log(sessionData)
 
     return(
         <div>
