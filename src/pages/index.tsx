@@ -1,13 +1,9 @@
-import { useContext } from "react";
 import { Main } from "./components/Main";
-import { Modal } from "./components/Modal";
 import { Sidebar } from "./components/Sidebar";
 import { MainLayout } from "./layout";
-import { GlobalContext } from "~/contexts/GlobalContextProvider/context";
+import { WriteFormModal } from "./components/WriteFormModal";
 
 export default function HomePage() {
-
-  const {isWriteModalOpen, setIsWriteModalOpen} = useContext(GlobalContext)
 
   return (
     <MainLayout>
@@ -17,7 +13,7 @@ export default function HomePage() {
           <Sidebar />
         </section>
       </div>
-      <Modal isOpen={isWriteModalOpen} onClose={() => setIsWriteModalOpen(false)} />
+      <WriteFormModal/>
     </MainLayout>
   );
 }
