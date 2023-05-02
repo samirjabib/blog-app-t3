@@ -16,9 +16,9 @@ type WriteFormData = {
 };
 
 const writeFormSchema = z.object({
-  title: z.string().min(3).max(20),
-  description: z.string().min(3).max(60),
-  body: z.string().min(3).max(100),
+  title: z.string().min(3, "Title must be at least 3 characters long"),
+  description: z.string().min(60, "Description must be at least 60 characters long"),
+  body: z.string().min(60, "Body must be at least 60 characters long"),
 });
 
 export default function WriteFormModal() {
@@ -32,12 +32,16 @@ export default function WriteFormModal() {
     resolver: zodResolver(writeFormSchema),
   });
 
-  const onSubmit: SubmitHandler<WriteFormData> = (data) => console.log(data);
+  console.log(errors.title?.message);
+
+  const onSubmit: SubmitHandler<WriteFormData> = (data) => {
+    console.log(data)
+  }
 
   return (
     <Modal isOpen={isWriteModalOpen} onClose={() => setIsWriteModalOpen}>
       <form
-        onSubmit={(e) => e.preventDefault()}
+        onSubmit={handleSubmit(onSubmit)}
         className="flex flex-col items-center justify-center space-y-4"
       >
         <p className="mb-10 w-full text-left text-sm text-red-500">
@@ -49,6 +53,9 @@ export default function WriteFormModal() {
           className="h-full w-full rounded-xl border border-gray-300 p-4 outline-none focus:border-gray-600"
           placeholder="Title of the blog"
         />
+        <p className="mb-10 w-full text-left text-sm text-red-500">
+          {errors.description?.message}
+        </p>
         <input
           type="text"
           {...register("description")}
@@ -56,6 +63,9 @@ export default function WriteFormModal() {
           className="h-full w-full rounded-xl border border-gray-300 p-4 outline-none focus:border-gray-600"
           placeholder="Description of the blog"
         />
+        <p className="mb-10 w-full text-left text-sm text-red-500">
+          {errors.body?.message}
+        </p>
         <textarea
           {...register("body")}
           id="body"
